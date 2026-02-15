@@ -13,6 +13,7 @@ import asyncio
 from flask import Flask
 from threading import Thread
 
+
 # --- KOYEB KEEP-ALIVE SERVER ---
 app = Flask('')
 
@@ -23,7 +24,7 @@ def home():
 def run_web_server():
     # Koyeb passes the port via environment variable, default to 8080
     port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, threaded=True)
 
 def keep_alive():
     t = Thread(target=run_web_server)
